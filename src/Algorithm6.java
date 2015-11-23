@@ -4,12 +4,14 @@ import java.util.*;
 
 public class Algorithm6 {
     
-       private static void switcher(String input){ 
+       private static void switcher(int input){ 
         
         List list = new List();
-                
+        
+        while (input != 0) {
         switch (input) {
-            case "create next item":
+            
+            case 0:
                 String name;
                 int quantity;
                 System.out.print("Please put in the name of the item: \n");
@@ -21,24 +23,30 @@ public class Algorithm6 {
                 list.insertFirstLink(name, quantity);
                 break;
                 
-            case "display":
+            case 1:
                 System.out.print("Here's your list: \n");
                 list.display();
                 break;
             
-            case "remove item":
+            case 2:
                 System.out.print("Which item you would like to remove?\n");
                 Scanner input3 = new Scanner(System.in);
                 name = input3.nextLine();
                 list.removeLink(name);
                 break;
             
-            case "find item":
+            case 3:
                 System.out.print("Which item are you searching for?");
                 Scanner input4 = new Scanner(System.in);
                 name = input4.nextLine();
                 list.find(name);
                 break;
+            
+            case 4:
+                list.removeFirst();
+                System.out.print("First item from the list removed.");
+                break;
+            }
         }
     }        
        
@@ -51,10 +59,11 @@ public class Algorithm6 {
                 + "-create next item(creates new items in the list)\n"
                 + "-display(displays the full content of the list)\n"
                 + "-remove item(removes item from the list)\n"
+                + "-remove first item from the list\n"
                 + "-find item(finds item on the list)\n");
-        String input;
+        int input;
         Scanner inNew = new Scanner(System.in);
-        input = inNew.nextLine();
+        input = inNew.nextInt();
         switcher(input);
     }
     
